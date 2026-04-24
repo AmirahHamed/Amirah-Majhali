@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chalky Wong | Visual Development + Character Design</title>
+    <title>Amirah Majhali | Visual Development + Character Design</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -38,10 +38,12 @@
             min-height: 100vh;
         }
 
-        /* Sidebar */
+        /* ═══════════════════════════════════
+           SIDEBAR
+        ═══════════════════════════════════ */
         .sidebar {
-            width: 280px;
-            padding: 50px 40px 40px;
+            width: 240px;
+            padding: 36px 32px 32px; /* ✅ تقليل padding العلوي من 50px إلى 36px */
             position: fixed;
             height: 100vh;
             display: flex;
@@ -56,12 +58,12 @@
         .sidebar-top {
             display: flex;
             flex-direction: column;
-            gap: 45px;
+            gap: 28px; /* ✅ تقليل المسافة من 45px إلى 28px */
         }
 
         .logo-img {
-            width: 90px;
-            height: 90px;
+            width: 72px;  /* ✅ تصغير اللوغو قليلاً */
+            height: 72px;
             border-radius: 50%;
             object-fit: cover;
             display: block;
@@ -78,33 +80,28 @@
         .nav a {
             display: block;
             padding: 3px 0;
-            font-size: 1.35rem;
+            font-size: 1.25rem;
             font-weight: 400;
             color: #2a2a2a;
             transition: color 0.2s ease;
             letter-spacing: -0.01em;
         }
 
-        .nav a:hover {
-            color: #d81b60;
-        }
-
-        .nav a.active {
-            color: #d81b60;
-        }
+        .nav a:hover { color: #d81b60; }
+        .nav a.active { color: #d81b60; }
 
         .nav-separator {
             height: 2px;
             background: #1a1a1a;
             width: 24px;
-            margin: 14px 0;
+            margin: 10px 0;
         }
 
         /* Social & Copyright */
         .sidebar-bottom {
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 12px;
         }
 
         .socials {
@@ -114,7 +111,7 @@
         }
 
         .socials a {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: #1a1a1a;
             transition: color 0.2s ease;
             display: flex;
@@ -122,30 +119,33 @@
             justify-content: center;
         }
 
-        .socials a:hover {
-            color: #d81b60;
-        }
+        .socials a:hover { color: #d81b60; }
 
         .copyright {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: #1a1a1a;
             font-weight: 400;
         }
 
-        /* Main Content */
+        /* ═══════════════════════════════════
+           MAIN CONTENT
+        ═══════════════════════════════════ */
         .main {
-            margin-left: 280px;
+            margin-left: 240px;
             flex: 1;
-            padding: 60px 50px;
-            max-width: calc(100% - 280px);
+            padding: 36px 36px 40px; /* ✅ تقليل padding من 60px 50px إلى 36px */
+            max-width: calc(100% - 240px);
             min-height: 100vh;
         }
 
+        /* ═══════════════════════════════════
+           GALLERY — الصور
+        ═══════════════════════════════════ */
         .gallery {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            align-items: start; /* مهم: يمنع تمدد الصور */
+            gap: 16px;
+            align-items: start;
         }
 
         .artwork {
@@ -153,6 +153,9 @@
             overflow: hidden;
             cursor: pointer;
             line-height: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .artwork img {
@@ -162,49 +165,81 @@
             transition: opacity 0.3s ease;
         }
 
-        .artwork:hover img {
-            opacity: 0.9;
+        .artwork:hover img { opacity: 0.9; }
+
+        /* ═══════════════════════════════════
+           GALLERY — الفيديوهات ✅ إصلاح كامل
+        ═══════════════════════════════════ */
+        .gallery video {
+            width: 100%;          /* ✅ عرض مرن بدل width="400" الثابت */
+            height: auto;
+            display: block;
+            border-radius: 4px;
+            background: #000;
         }
 
-        .artwork:hover img {
-            opacity: 0.9;
+        /* ═══════════════════════════════════
+           GALLERY — ملفات PDF ✅ إصلاح كامل
+        ═══════════════════════════════════ */
+        .pdf-wrapper {
+            width: 100%;
+            position: relative;
+            padding-bottom: 75%; /* نسبة ارتفاع مرنة 4:3 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 4px;
+            border: 1px solid #e5e5e5;
         }
 
-        /* Page Sections */
+        .pdf-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;   /* ✅ عرض مرن */
+            height: 100%;  /* ✅ ارتفاع مرن */
+            border: none;
+        }
+
+        /* ═══════════════════════════════════
+           PAGE SECTIONS
+        ═══════════════════════════════════ */
         .page-section {
             display: none;
             animation: fadeIn 0.3s ease;
         }
 
-        .page-section.active {
-            display: block;
-        }
+        .page-section.active { display: block; }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from { opacity: 0; transform: translateY(6px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
+        /* ═══════════════════════════════════
+           ABOUT
+        ═══════════════════════════════════ */
         .about-content h2 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 400;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             color: #1a1a1a;
         }
 
         .about-content p {
             color: #555;
-            font-size: 1.05rem;
-            line-height: 1.8;
-            max-width: 600px;
-            margin-bottom: 18px;
+            font-size: 1rem;
+            line-height: 1.85;
+            max-width: 580px;
+            margin-bottom: 16px;
             font-weight: 400;
         }
 
-        /* Mobile Header */
+        /* ═══════════════════════════════════
+           MOBILE HEADER
+        ═══════════════════════════════════ */
         .mobile-header {
             display: none;
-            padding: 16px 20px;
+            padding: 14px 18px;
             align-items: center;
             justify-content: space-between;
             position: fixed;
@@ -213,13 +248,14 @@
             right: 0;
             background: rgba(255,255,255,0.98);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             z-index: 200;
-            border-bottom: 1px solid rgba(0,0,0,0.06);
+            border-bottom: 1px solid rgba(0,0,0,0.07);
         }
 
         .mobile-logo img {
-            width: 42px;
-            height: 42px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             object-fit: cover;
         }
@@ -243,25 +279,19 @@
             border-radius: 1px;
         }
 
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 6px);
-        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
 
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -6px);
-        }
-
-        /* Mobile Menu */
+        /* ═══════════════════════════════════
+           MOBILE MENU
+        ═══════════════════════════════════ */
         .mobile-menu {
             position: fixed;
             inset: 0;
             background: #ffffff;
             z-index: 150;
-            padding: 90px 35px 40px;
+            padding: 80px 30px 36px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -270,15 +300,13 @@
             overflow-y: auto;
         }
 
-        .mobile-menu.open {
-            transform: translateX(0);
-        }
+        .mobile-menu.open { transform: translateX(0); }
 
         .mobile-nav ul {
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
 
         .mobile-nav a {
@@ -289,45 +317,72 @@
             padding: 4px 0;
         }
 
-        .mobile-nav a.active {
-            color: #d81b60;
-        }
+        .mobile-nav a.active { color: #d81b60; }
 
         .mobile-separator {
             height: 2px;
             background: #1a1a1a;
             width: 24px;
-            margin: 12px 0;
+            margin: 10px 0;
         }
 
-        /* Responsive */
+        /* ═══════════════════════════════════
+           RESPONSIVE — تابلت
+        ═══════════════════════════════════ */
         @media (max-width: 1024px) {
-            .gallery {
-                grid-template-columns: 1fr;
-            }
+            .sidebar { width: 200px; padding: 28px 24px 28px; }
+            .main { margin-left: 200px; max-width: calc(100% - 200px); padding: 28px 28px 36px; }
+            .gallery { grid-template-columns: 1fr; } /* عمود واحد على التابلت */
         }
 
+        /* ═══════════════════════════════════
+           RESPONSIVE — موبايل ✅
+        ═══════════════════════════════════ */
         @media (max-width: 768px) {
-            .artwork {
-                aspect-ratio: 1 / 1;
-            }
-            .sidebar {
-                display: none;
-            }
+            /* إخفاء الـ sidebar وإظهار الموبايل هيدر */
+            .sidebar { display: none; }
+            .mobile-header { display: flex; }
 
-            .mobile-header {
-                display: flex;
-            }
-
+            /* ✅ المشكلة الأولى: تقليل المساحة العلوية */
             .main {
                 margin-left: 0;
                 max-width: 100%;
-                padding: 80px 20px 40px;
+                padding: 72px 16px 32px; /* 72px فقط لأن الهيدر ~66px */
             }
 
+            /* ✅ عمود واحد على الموبايل */
             .gallery {
-                gap: 16px;
+                grid-template-columns: 1fr;
+                gap: 14px;
             }
+
+            /* ✅ إزالة aspect-ratio الذي كان يشوه الصور */
+            .artwork {
+                aspect-ratio: unset;
+            }
+
+            /* ✅ الفيديو كامل العرض */
+            .gallery video {
+                width: 100%;
+                max-height: 280px;
+                object-fit: cover;
+            }
+
+            /* ✅ PDF بنسبة أصغر على الموبايل */
+            .pdf-wrapper {
+                padding-bottom: 85%;
+            }
+
+            .about-content h2 { font-size: 1.5rem; }
+            .about-content p  { font-size: 0.95rem; }
+        }
+
+        /* ═══════════════════════════════════
+           RESPONSIVE — شاشات صغيرة جداً
+        ═══════════════════════════════════ */
+        @media (max-width: 380px) {
+            .main { padding: 68px 12px 28px; }
+            .gallery { gap: 10px; }
         }
     </style>
 </head>
@@ -336,7 +391,7 @@
     <!-- Mobile Header -->
     <div class="mobile-header">
         <div class="mobile-logo">
-            <img src="https://placehold.co/200x200/fde047/d81b60?text=CW" alt="Chalky Wong">
+            <img src="https://placehold.co/200x200/fde047/d81b60?text=AM" alt="Amirah Majhali">
         </div>
         <div class="hamburger" id="hamburger">
             <span></span>
@@ -354,16 +409,15 @@
                 <li><a href="#" class="nav-link" data-page="films">Films</a></li>
                 <li><a href="#" class="nav-link" data-page="about">About</a></li>
                 <li><div class="mobile-separator"></div></li>
-               
             </ul>
         </nav>
         <div>
-            <div class="socials" style="margin-bottom:14px;">
-                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></i></a>
+            <div class="socials" style="margin-bottom:12px;">
+                <a href="https://www.instagram.com/meiarc?igsh=MXJxNzhqYmJnaWJrdA==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://drive.google.com/drive/folders/1-DjAMbscjCNf04q6695SCUKrade2zD97" target="_blank" aria-label="Google Drive"><i class="fab fa-google-drive"></i></a>
+                <a href="mailto:amera.majhali@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
             </div>
-            <div class="copyright">© Chalky Wong</div>
+            <div class="copyright">©Amirah Majhali</div>
         </div>
     </div>
 
@@ -371,8 +425,7 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-top">
-                <img src="https://placehold.co/200x200/fde047/d81b60?text=CW" alt="Chalky Wong" class="logo-img">
-
+                <img src="https://placehold.co/200x200/fde047/d81b60?text=AM" alt="Amirah Majhali" class="logo-img">
                 <nav class="nav">
                     <ul>
                         <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
@@ -380,29 +433,28 @@
                         <li><a href="#" class="nav-link" data-page="films">Films</a></li>
                         <li><a href="#" class="nav-link" data-page="about">About</a></li>
                         <li><div class="nav-separator"></div></li>
-                        
                     </ul>
                 </nav>
             </div>
 
             <div class="sidebar-bottom">
-            <div class="socials">
-                <a href="https://www.instagram.com/meiarc?igsh=MXJxNzhqYmJnaWJrdA==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://drive.google.com/drive/folders/1-DjAMbscjCNf04q6695SCUKrade2zD97" target="_blank" aria-label="Google Drive"><i class="fab fa-google-drive"></i></a>
-                <a href="amera.majhali@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-            </div>
-            <div class="copyright">©Amirah Majhali</div>
-        </div>
+                <div class="socials">
+                    <a href="https://www.instagram.com/meiarc?igsh=MXJxNzhqYmJnaWJrdA==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://drive.google.com/drive/folders/1-DjAMbscjCNf04q6695SCUKrade2zD97" target="_blank" aria-label="Google Drive"><i class="fab fa-google-drive"></i></a>
+                    <a href="mailto:amera.majhali@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+                <div class="copyright">©Amirah Majhali</div>
             </div>
         </aside>
 
         <!-- Main Content -->
         <main class="main">
+
             <!-- HOME -->
             <div class="page-section active" id="page-home">
                 <div class="gallery">
                     <div class="artwork">
-                        <img src="images/post-1.jpg">
+                        <img src="images/post-1.jpg" alt="Artwork">
                         <img src="images/post-6.jpg" alt="Artwork">
                     </div>
                     <div class="artwork">
@@ -410,73 +462,57 @@
                         <img src="images/post-4.PNG" alt="Artwork">
                         <img src="images/post-3.PNG" alt="Artwork">
                         <img src="images/post-2.jpg" alt="Artwork">
-                       
                     </div>
-                    
-                    
                 </div>
             </div>
 
-            <!-- CLIENT -->
+            <!-- CLIENT — ✅ PDF بـ wrapper مرن -->
             <div class="page-section" id="page-client">
                 <div class="gallery">
-                    </style>
-                    <iframe 
-                    src="pdf/azul1.pdf" 
-                    width="500" 
-                    height="400">
-                    </iframe>
-                    <iframe 
-                     src="pdf/aqha1.pdf" 
-                    width="500" 
-                    height="400">
-                    </iframe>
-                    <iframe 
-                    src="pdf/azulbox.pdf" 
-                    width="500" 
-                    height="400">
-                    </iframe>
-                    <iframe 
-                     src="pdf/chocoazul.pdf" 
-                    width="500" 
-                    height="400">
-                    </iframe>
-                    <iframe 
-                     src="pdf/saazul.pdf" 
-                    width="500" 
-                    height="400">
-                    </iframe>
-                    <iframe 
-                     src="pdf/nus.pdf" 
-                    width="500" 
-                    height="400">
-                    </iframe>
+                    <div class="pdf-wrapper">
+                        <iframe src="pdf/azul1.pdf"></iframe>
+                    </div>
+                    <div class="pdf-wrapper">
+                        <iframe src="pdf/aqha1.pdf"></iframe>
+                    </div>
+                    <div class="pdf-wrapper">
+                        <iframe src="pdf/azulbox.pdf"></iframe>
+                    </div>
+                    <div class="pdf-wrapper">
+                        <iframe src="pdf/chocoazul.pdf"></iframe>
+                    </div>
+                    <div class="pdf-wrapper">
+                        <iframe src="pdf/saazul.pdf"></iframe>
+                    </div>
+                    <div class="pdf-wrapper">
+                        <iframe src="pdf/nus.pdf"></iframe>
+                    </div>
                 </div>
             </div>
 
-            <!-- FILMS -->
+            <!-- FILMS — ✅ فيديو بعرض مرن -->
             <div class="page-section" id="page-films">
                 <div class="gallery">
-                    <video width="400" controls>
-                    <source src="videos/aqha.mov" type="video/mp4">
+                    <video controls>
+                        <source src="videos/aqha.mov" type="video/mp4">
                     </video>
-                    <video width="400" controls>
-                   <source src="videos/car.mov" type="video/mp4">
+                    <video controls>
+                        <source src="videos/car.mov" type="video/mp4">
                     </video>
-                    <video width="400" controls>
-                     <source src="videos/eat.mov" type="video/mp4">
+                    <video controls>
+                        <source src="videos/eat.mov" type="video/mp4">
                     </video>
-                    <video width="400" controls>
-                     <source src="videos/matcha.mov" type="video/mp4">
+                    <video controls>
+                        <source src="videos/matcha.mov" type="video/mp4">
                     </video>
-                    <video width="400" controls>
-                     <source src="videos/new.MOV" type="video/mp4">
+                    <video controls>
+                        <source src="videos/new.MOV" type="video/mp4">
                     </video>
-                    <video width="400" controls>
-                     <source src="videos/sa.mov" type="video/mp4">
+                    <video controls>
+                        <source src="videos/sa.mov" type="video/mp4">
                     </video>
-                    <video width="400" controls>
-                     <source src="videos/sumer.mov" type="video/mp4">
+                    <video controls>
+                        <source src="videos/sumer.mov" type="video/mp4">
                     </video>
                 </div>
             </div>
@@ -484,19 +520,17 @@
             <!-- ABOUT -->
             <div class="page-section about-content" id="page-about">
                 <h2>About</h2>
-                <p> I’m an artist specializing in illustration and animation, transforming ideas into vibrant visual worlds where motion meets story and details carry emotion. </p>
-                <p> I have a passion for character design and building visual styles that leave a lasting impact, with a focus on creating unique artistic identities that reflect the spirit of each project. I believe every line drawn and every color chosen is a deliberate decision—it's not just about aesthetics, but about crafting a complete experience.</p>
-                <p> My work blends imagination with clarity, creating pieces that capture attention and connect with audiences on a deeper level, whether through still illustrations or animated content.</p>
-                <p> Beyond my work, I find inspiration in everyday details—from subtle movements to untold stories—because art, to me, is not just a task… it’s a way of seeing the world.</p>
+                <p>I'm an artist specializing in illustration and animation, transforming ideas into vibrant visual worlds where motion meets story and details carry emotion.</p>
+                <p>I have a passion for character design and building visual styles that leave a lasting impact, with a focus on creating unique artistic identities that reflect the spirit of each project. I believe every line drawn and every color chosen is a deliberate decision—it's not just about aesthetics, but about crafting a complete experience.</p>
+                <p>My work blends imagination with clarity, creating pieces that capture attention and connect with audiences on a deeper level, whether through still illustrations or animated content.</p>
+                <p>Beyond my work, I find inspiration in everyday details—from subtle movements to untold stories—because art, to me, is not just a task… it's a way of seeing the world.</p>
             </div>
- 
-           
-            </div>
+
         </main>
     </div>
 
     <script>
-        // Mobile menu
+        // Mobile menu toggle
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobileMenu');
 
@@ -514,16 +548,21 @@
                 e.preventDefault();
                 const page = link.dataset.page;
 
+                // تحديث الأزرار النشطة
                 navLinks.forEach(l => l.classList.remove('active'));
                 document.querySelectorAll(`[data-page="${page}"]`).forEach(l => l.classList.add('active'));
 
+                // تبديل الصفحات
                 document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
                 document.getElementById(`page-${page}`).classList.add('active');
 
+                // إغلاق المنيو على الموبايل
                 hamburger.classList.remove('active');
                 mobileMenu.classList.remove('open');
                 document.body.style.overflow = '';
-                window.scrollTo({ top: 0 });
+
+                // العودة لأعلى الصفحة
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         });
     </script>
